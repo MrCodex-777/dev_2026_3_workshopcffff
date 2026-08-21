@@ -14,8 +14,12 @@ class Conversion:
         Ejemplo:
             celsius_a_fahrenheit(0) -> 32.0
             celsius_a_fahrenheit(100) -> 212.0
+
         """
-        pass
+        celsius = float(celsius)
+        fahrenheit = (celsius * 9/5) + 32
+        return fahrenheit
+        
     
     def fahrenheit_a_celsius(self, fahrenheit):
         """
@@ -33,7 +37,9 @@ class Conversion:
             fahrenheit_a_celsius(32) -> 0.0
             fahrenheit_a_celsius(212) -> 100.0
         """
-        pass
+        fahrenheit = float(fahrenheit)
+        celsius = (fahrenheit - 32) * 5/9
+        return celsius
     
     def metros_a_pies(self, metros):
         """
@@ -50,7 +56,10 @@ class Conversion:
         Ejemplo:
             metros_a_pies(1) -> 3.28084
         """
-        pass
+        metros = float(metros)
+        pies = metros * 3.28084
+        return pies
+        
     
     def pies_a_metros(self, pies):
         """
@@ -67,7 +76,10 @@ class Conversion:
         Ejemplo:
             pies_a_metros(3.28084) -> 1.0
         """
-        pass
+        pies = float(pies)
+        metros = pies * 0.3048
+        return metros
+        
     
     def decimal_a_binario(self, decimal):
         """
@@ -83,7 +95,13 @@ class Conversion:
             decimal_a_binario(10) -> "1010"
             decimal_a_binario(255) -> "11111111"
         """
-        pass
+        decimal = int(decimal)
+        binario = ""
+        
+        if decimal < 0:
+            raise ValueError("El número decimal debe ser positivo.")
+            binario = bin(decimal)[2:]  # Convertir a binario y eliminar el prefijo '0b'
+        return binario
     
     def binario_a_decimal(self, binario):
         """
@@ -99,7 +117,12 @@ class Conversion:
             binario_a_decimal("1010") -> 10
             binario_a_decimal("11111111") -> 255
         """
-        pass
+        binario = str(binario)
+        if not all(bit in '01' for bit in binario):
+            raise ValueError("El número binario debe contener solo 0s y 1s.")
+        decimal = int(binario, 2)  # Convertir de binario a decimal
+        return decimal
+        
     
     def decimal_a_romano(self, numero):
         """
@@ -115,8 +138,23 @@ class Conversion:
             decimal_a_romano(9) -> "IX"
             decimal_a_romano(1994) -> "MCMXCIV"
         """
-        pass
-    
+        numero = int(numero)
+        numeros_romanos = [
+            (1000, "M"), (900, "CM"), (500, "D"), (400, "CD"),
+            (100, "C"), (90, "XC"), (50, "L"), (40, "XL"),
+            (10, "X"), (9, "IX"), (5, "V"), (4, "IV"),
+            (1, "I")
+        ]
+        if not 1 <= numero <= 3999:
+            raise ValueError("El número debe estar entre 1 y 3999.")
+        
+        romano = ""
+        for value, symbol in numeros_romanos:
+            while numero >= value:
+                romano += symbol
+                numero -= value
+        return romano
+
     def romano_a_decimal(self, romano):
         """
         Convierte un número romano a decimal.
@@ -131,8 +169,20 @@ class Conversion:
             romano_a_decimal("IX") -> 9
             romano_a_decimal("MCMXCIV") -> 1994
         """
-        pass
-    
+        romano = str(romano)
+        valores_romanos = {
+            'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000
+        }
+        if not all(bit in valores_romanos for bit in romano):
+            raise ValueError("El número romano contiene caracteres no válidos.")
+        decimal = 0
+        for i in range(len(romano)):
+            if i > 0 and valores_romanos[romano[i]] > valores_romanos[romano[i-1]]:
+                decimal += valores_romanos[romano[i]] - 2 * valores_romanos[romano[i-1]]
+            else:
+                decimal += valores_romanos[romano[i]]
+        return decimal
+
     def texto_a_morse(self, texto):
         """
         Convierte texto a código Morse.
@@ -147,8 +197,15 @@ class Conversion:
             texto_a_morse("SOS") -> "... --- ..."
             texto_a_morse("HELLO") -> ".... . .-.. .-.. ---"
         """
-        pass
-    
+        texto = str(texto).upper()
+        codigo_morse = {
+            'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..',
+            '0': '-----', '1': '.----', '2': '..---', '3': '../../..', '4': '../../../', '5': '../../../../'
+        }
+        if not all(bit in codigo_morse for bit in texto):
+            raise ValueError("El texto contiene caracteres no válidos.")
+        return ' '.join(codigo_morse[bit] for bit in texto)
+
     def morse_a_texto(self, morse):
         """
         Convierte código Morse a texto.
@@ -163,4 +220,15 @@ class Conversion:
             morse_a_texto("... --- ...") -> "SOS"
             morse_a_texto(".... . .-.. .-.. ---") -> "HELLO"
         """
-        pass
+        morse = str(morse)
+        codigo_morse = {
+            '.-': 'A', '-...': 'B', '-.-.': 'C', '-..': 'D', '.': 'E', '..-.': 'F', '--.': 'G', '....': 'H', '..': 'I', '.---': 'J', '-.-': 'K', '.-..': 'L', '--': 'M', '-.': 'N', '---': 'O', '.--.': 'P', '--.-': 'Q', '.-.': 'R', '...': 'S', '-': 'T', '..-': 'U', '...-': 'V', '.--': 'W', '-..-': 'X', '-.--': 'Y', '--..': 'Z',
+            '-----': '0', '.----': '1', '..---': '2', '../../..': '3', '../../../': '4', '../../../../': '5'
+        }
+        palabras = morse.split('   ')  # Separar palabras por tres espacios
+        texto = []
+        for palabra in palabras:
+            letras = palabra.split(' ')
+            texto.append(''.join(codigo_morse[letra] for letra in letras if letra in codigo_morse))
+        return ''.join(texto)
+        
