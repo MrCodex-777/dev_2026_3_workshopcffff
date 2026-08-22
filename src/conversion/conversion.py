@@ -96,11 +96,9 @@ class Conversion:
             decimal_a_binario(255) -> "11111111"
         """
         decimal = int(decimal)
-        binario = ""
-        
         if decimal < 0:
             raise ValueError("El número decimal debe ser positivo.")
-            binario = bin(decimal)[2:]  # Convertir a binario y eliminar el prefijo '0b'
+        binario = bin(decimal)[2:]  # Convertir a binario y eliminar el prefijo '0b'
         return binario
     
     def binario_a_decimal(self, binario):
@@ -200,7 +198,7 @@ class Conversion:
         texto = str(texto).upper()
         codigo_morse = {
             'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..',
-            '0': '-----', '1': '.----', '2': '..---', '3': '../../..', '4': '../../../', '5': '../../../../'
+            '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.'
         }
         if not all(bit in codigo_morse for bit in texto):
             raise ValueError("El texto contiene caracteres no válidos.")
@@ -223,7 +221,7 @@ class Conversion:
         morse = str(morse)
         codigo_morse = {
             '.-': 'A', '-...': 'B', '-.-.': 'C', '-..': 'D', '.': 'E', '..-.': 'F', '--.': 'G', '....': 'H', '..': 'I', '.---': 'J', '-.-': 'K', '.-..': 'L', '--': 'M', '-.': 'N', '---': 'O', '.--.': 'P', '--.-': 'Q', '.-.': 'R', '...': 'S', '-': 'T', '..-': 'U', '...-': 'V', '.--': 'W', '-..-': 'X', '-.--': 'Y', '--..': 'Z',
-            '-----': '0', '.----': '1', '..---': '2', '../../..': '3', '../../../': '4', '../../../../': '5'
+            '-----': '0', '.----': '1', '..---': '2', '...--': '3', '....-': '4', '.....': '5', '-....': '6', '--...': '7', '---..': '8', '----.': '9'
         }
         palabras = morse.split('   ')  # Separar palabras por tres espacios
         texto = []
