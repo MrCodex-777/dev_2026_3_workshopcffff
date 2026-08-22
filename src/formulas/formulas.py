@@ -19,6 +19,8 @@ class Formulas:
         Ejemplo:
             velocidad_media(100, 10) -> 10.0
         """
+        distancia = float(distancia)
+        tiempo = float(tiempo)
         return distancia / tiempo
 
     def mruv_posicion(self, posicion_inicial, velocidad_inicial, aceleracion, tiempo):
@@ -39,7 +41,11 @@ class Formulas:
         Ejemplo:
             mruv_posicion(0, 2, 1, 3) -> 10.5
         """
-        pass
+        posicion_inicial = float(posicion_inicial)
+        velocidad_inicial = float(velocidad_inicial)
+        aceleracion = float(aceleracion)
+        tiempo = float(tiempo)
+        return posicion_inicial + velocidad_inicial * tiempo + 0.5 * aceleracion * tiempo ** 2
 
     def mruv_velocidad(self, velocidad_inicial, aceleracion, tiempo):
         """
@@ -58,7 +64,10 @@ class Formulas:
         Ejemplo:
             mruv_velocidad(2, 1, 3) -> 5.0
         """
-        pass
+        velocidad_inicial = float(velocidad_inicial)
+        aceleracion = float(aceleracion)
+        tiempo = float(tiempo)
+        return velocidad_inicial + aceleracion * tiempo
 
     def fuerza_newton(self, masa, aceleracion):
         """
@@ -76,7 +85,9 @@ class Formulas:
         Ejemplo:
             fuerza_newton(10, 2) -> 20.0
         """
-        pass
+        masa = float(masa)
+        aceleracion = float(aceleracion)
+        return masa * aceleracion
 
     def energia_cinetica(self, masa, velocidad):
         """
@@ -94,7 +105,9 @@ class Formulas:
         Ejemplo:
             energia_cinetica(2, 3) -> 9.0
         """
-        pass
+        masa = float(masa)
+        velocidad = float(velocidad)
+        return 0.5 * masa * velocidad ** 2
 
     def energia_potencial(self, masa, altura, gravedad=9.8):
         """
@@ -113,7 +126,10 @@ class Formulas:
         Ejemplo:
             energia_potencial(2, 5) -> 98.0
         """
-        pass
+        masa = float(masa)
+        altura = float(altura)
+        gravedad = float(gravedad)
+        return masa * gravedad * altura
 
     def ley_ohm_voltaje(self, corriente, resistencia):
         """
@@ -131,7 +147,9 @@ class Formulas:
         Ejemplo:
             ley_ohm_voltaje(2, 5) -> 10.0
         """
-        pass
+        corriente = float(corriente)
+        resistencia = float(resistencia)
+        return corriente * resistencia
 
     def ley_ohm_corriente(self, voltaje, resistencia):
         """
@@ -168,7 +186,10 @@ class Formulas:
         Ejemplo:
             interes_simple(1000, 0.05, 2) -> 100.0
         """
-        pass
+        capital = float(capital)
+        tasa = float(tasa)
+        tiempo = float(tiempo)
+        return capital * tasa * tiempo
 
     def interes_compuesto(self, capital, tasa, tiempo, n=1):
         """
@@ -188,7 +209,11 @@ class Formulas:
         Ejemplo:
             interes_compuesto(1000, 0.05, 2) -> 1102.5
         """
-        pass
+        capital = float(capital)
+        tasa = float(tasa)
+        tiempo = float(tiempo)
+        n = int(n)
+        return capital * (1 + tasa / n) ** (n * tiempo)
 
     def discriminante(self, a, b, c):
         """
@@ -207,7 +232,10 @@ class Formulas:
         Ejemplo:
             discriminante(1, -3, 2) -> 1
         """
-        pass
+        a = float(a)
+        b = float(b)
+        c = float(c)
+        return b ** 2 - 4 * a * c
 
     def raices_cuadraticas(self, a, b, c):
         """
@@ -227,7 +255,15 @@ class Formulas:
         Ejemplo:
             raices_cuadraticas(1, -3, 2) -> (2.0, 1.0)
         """
-        pass
+        a = float(a)
+        b = float(b)
+        c = float(c)
+        discriminante = b ** 2 - 4 * a * c
+        if discriminante < 0:
+            raise ValueError("No hay raíces reales.")
+        raiz1 = (-b + discriminante ** 0.5) / (2 * a)
+        raiz2 = (-b - discriminante ** 0.5) / (2 * a)
+        return (raiz1, raiz2)
 
     def imc(self, peso, altura):
         """
@@ -245,7 +281,11 @@ class Formulas:
         Ejemplo:
             imc(70, 1.75) -> 22.86
         """
-        pass
+        peso = float(peso)
+        altura = float(altura)
+        if altura <= 0:
+            raise ValueError("La altura debe ser mayor que cero.")
+        return peso / (altura ** 2)
 
     def hipotenusa_pitagoras(self, cateto1, cateto2):
         """
@@ -263,4 +303,6 @@ class Formulas:
         Ejemplo:
             hipotenusa_pitagoras(3, 4) -> 5.0
         """
-        pass
+        cateto1 = float(cateto1)
+        cateto2 = float(cateto2)
+        return (cateto1 ** 2 + cateto2 ** 2) ** 0.5
