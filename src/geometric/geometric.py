@@ -1,7 +1,7 @@
 class Geometria:
     """
     Class with geometric exercises.
-    Include basic and funny operations in 2D and 3D.
+    Include basic and funny operations in 2D and 3D. haha funny ._.
     """
     
     def area_rectangulo(self, base, altura):
@@ -15,6 +15,8 @@ class Geometria:
         Returns:
             float: Área del rectángulo
         """
+        base = float(base)
+        altura = float(altura)
         return base*altura
     
     def perimetro_rectangulo(self, base, altura):
@@ -28,8 +30,10 @@ class Geometria:
         Returns:
             float: Perímetro del rectángulo
         """
-        pass
-    
+        base = float(base)
+        altura = float(altura)
+        return 2 * (base + altura)
+
     def area_circulo(self, radio):
         """
         Calcula el área de un círculo.
@@ -40,7 +44,9 @@ class Geometria:
         Returns:
             float: Área del círculo
         """
-        pass
+        radio = float(radio)
+        import math
+        return math.pi * radio ** 2
     
     def perimetro_circulo(self, radio):
         """
@@ -52,7 +58,9 @@ class Geometria:
         Returns:
             float: Perímetro del círculo
         """
-        pass
+        radio = float(radio)
+        import math
+        return 2 * math.pi * radio
     
     def area_triangulo(self, base, altura):
         """
@@ -65,8 +73,10 @@ class Geometria:
         Returns:
             float: Área del triángulo
         """
-        pass
-    
+        base = float(base)
+        altura = float(altura)
+        return 0.5 * base * altura
+
     def perimetro_triangulo(self, lado1, lado2, lado3):
         """
         Calcula el perímetro de un triángulo.
@@ -79,7 +89,11 @@ class Geometria:
         Returns:
             float: Perímetro del triángulo
         """
-        pass
+        lado1 = float(lado1)
+        lado2 = float(lado2)
+        lado3 = float(lado3)
+        perimetro = lado1 + lado2 + lado3
+        return perimetro
     
     def es_triangulo_valido(self, lado1, lado2, lado3):
         """
@@ -95,8 +109,11 @@ class Geometria:
         Returns:
             bool: True si los lados pueden formar un triángulo, False en caso contrario
         """
-        pass
-    
+        lado1 = float(lado1)
+        lado2 = float(lado2)
+        lado3 = float(lado3)
+        return (lado1 + lado2 > lado3) and (lado1 + lado3 > lado2) and (lado2 + lado3 > lado1)
+
     def area_trapecio(self, base_mayor, base_menor, altura):
         """
         Calcula el área de un trapecio.
@@ -109,8 +126,11 @@ class Geometria:
         Returns:
             float: Área del trapecio
         """
-        pass
-    
+        base_mayor = float(base_mayor)
+        base_menor = float(base_menor)
+        altura = float(altura)
+        return 0.5 * (base_mayor + base_menor) * altura
+
     def area_rombo(self, diagonal_mayor, diagonal_menor):
         """
         Calcula el área de un rombo usando sus diagonales.
@@ -122,8 +142,10 @@ class Geometria:
         Returns:
             float: Área del rombo
         """
-        pass
-    
+        diagonal_mayor = float(diagonal_mayor)
+        diagonal_menor = float(diagonal_menor)
+        return 0.5 * diagonal_mayor * diagonal_menor
+
     def area_pentagono_regular(self, lado, apotema):
         """
         Calcula el área de un pentágono regular.
@@ -135,8 +157,10 @@ class Geometria:
         Returns:
             float: Área del pentágono regular
         """
-        pass
-    
+        lado = float(lado)
+        apotema = float(apotema)
+        return 0.5 * 5 * lado * apotema
+
     def perimetro_pentagono_regular(self, lado):
         """
         Calcula el perímetro de un pentágono regular.
@@ -147,7 +171,8 @@ class Geometria:
         Returns:
             float: Perímetro del pentágono regular
         """
-        pass
+        lado = float(lado)
+        return 5 * lado
     
     def area_hexagono_regular(self, lado, apotema):
         """
@@ -160,8 +185,10 @@ class Geometria:
         Returns:
             float: Área del hexágono regular
         """
-        pass
-    
+        lado = float(lado)
+        apotema = float(apotema)
+        return 0.5 * 6 * lado * apotema
+
     def perimetro_hexagono_regular(self, lado):
         """
         Calcula el perímetro de un hexágono regular.
@@ -172,7 +199,8 @@ class Geometria:
         Returns:
             float: Perímetro del hexágono regular
         """
-        pass
+        lado = float(lado)
+        return 6 * lado
     
     def volumen_cubo(self, lado):
         """
@@ -184,8 +212,9 @@ class Geometria:
         Returns:
             float: Volumen del cubo
         """
-        pass
-    
+        lado = float(lado)
+        return lado ** 3
+
     def area_superficie_cubo(self, lado):
         """
         Calcula el área de la superficie de un cubo.
@@ -196,8 +225,9 @@ class Geometria:
         Returns:
             float: Área de la superficie del cubo
         """
-        pass
-    
+        lado = float(lado)
+        return 6 * lado ** 2
+
     def volumen_esfera(self, radio):
         """
         Calcula el volumen de una esfera.
@@ -208,7 +238,9 @@ class Geometria:
         Returns:
             float: Volumen de la esfera
         """
-        pass
+        radio = float(radio)
+        import math
+        return (4/3) * math.pi * radio ** 3
     
     def area_superficie_esfera(self, radio):
         """
@@ -220,7 +252,9 @@ class Geometria:
         Returns:
             float: Área de la superficie de la esfera
         """
-        pass
+        radio = float(radio)
+        import math
+        return 4 * math.pi * radio ** 2
     
     def volumen_cilindro(self, radio, altura):
         """
@@ -233,7 +267,10 @@ class Geometria:
         Returns:
             float: Volumen del cilindro
         """
-        pass
+        radio = float(radio)
+        altura = float(altura)
+        import math
+        return math.pi * radio ** 2 * altura
     
     def area_superficie_cilindro(self, radio, altura):
         """
@@ -246,7 +283,10 @@ class Geometria:
         Returns:
             float: Área de la superficie del cilindro
         """
-        pass
+        radio = float(radio)
+        altura = float(altura)
+        import math
+        return 2 * math.pi * radio * (radio + altura)
     
     def distancia_entre_puntos(self, x1, y1, x2, y2):
         """
@@ -261,7 +301,11 @@ class Geometria:
         Returns:
             float: Distancia entre los dos puntos
         """
-        pass
+        x1 = float(x1)
+        y1 = float(y1)
+        x2 = float(x2)
+        y2 = float(y2)
+        return ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
     
     def punto_medio(self, x1, y1, x2, y2):
         """
@@ -276,7 +320,13 @@ class Geometria:
         Returns:
             tuple: Coordenadas (x, y) del punto medio
         """
-        pass
+        x1 = float(x1)
+        y1 = float(y1)
+        x2 = float(x2)
+        y2 = float(y2)
+        punto_medio_x = (x1 + x2) / 2
+        punto_medio_y = (y1 + y2) / 2
+        return (punto_medio_x, punto_medio_y)
     
     def pendiente_recta(self, x1, y1, x2, y2):
         """
@@ -291,8 +341,14 @@ class Geometria:
         Returns:
             float: Pendiente de la recta
         """
-        pass
-    
+        x1 = float(x1)
+        y1 = float(y1)
+        x2 = float(x2)
+        y2 = float(y2)
+        if x2 - x1 == 0:
+            raise ValueError("La recta es vertical y no tiene pendiente definida.")
+        return (y2 - y1) / (x2 - x1)
+
     def ecuacion_recta(self, x1, y1, x2, y2):
         """
         Obtiene los coeficientes de la ecuación de una recta en la forma Ax + By + C = 0.
@@ -306,8 +362,15 @@ class Geometria:
         Returns:
             tuple: Coeficientes (A, B, C) de la ecuación de la recta
         """
-        pass
-    
+        x1 = float(x1)
+        y1 = float(y1)
+        x2 = float(x2)
+        y2 = float(y2)
+        A = y2 - y1
+        B = x1 - x2
+        C = x2 * y1 - x1 * y2
+        return (A, B, C)
+
     def area_poligono_regular(self, num_lados, lado, apotema):
         """
         Calcula el área de un polígono regular.
@@ -320,7 +383,10 @@ class Geometria:
         Returns:
             float: Área del polígono regular
         """
-        pass
+        num_lados = int(num_lados)
+        lado = float(lado)
+        apotema = float(apotema)
+        return 0.5 * num_lados * lado * apotema
     
     def perimetro_poligono_regular(self, num_lados, lado):
         """
@@ -333,4 +399,6 @@ class Geometria:
         Returns:
             float: Perímetro del polígono regular
         """
-        pass
+        num_lados = int(num_lados)
+        lado = float(lado)
+        return num_lados * lado
