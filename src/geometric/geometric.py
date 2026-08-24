@@ -17,7 +17,11 @@ class Geometria:
         """
         base = float(base)
         altura = float(altura)
-        return base*altura
+        if base < 0 or altura < 0:
+            return 0
+        area = base * altura
+        return area
+        
     
     def perimetro_rectangulo(self, base, altura):
         """
@@ -32,6 +36,8 @@ class Geometria:
         """
         base = float(base)
         altura = float(altura)
+        if base < 0 or altura < 0:
+            return 0
         return 2 * (base + altura)
 
     def area_circulo(self, radio):
@@ -45,6 +51,8 @@ class Geometria:
             float: Área del círculo
         """
         radio = float(radio)
+        if radio < 0:
+            return 0
         import math
         return math.pi * radio ** 2
     
@@ -75,6 +83,8 @@ class Geometria:
         """
         base = float(base)
         altura = float(altura)
+        if base < 0 or altura < 0:
+            return 0
         return 0.5 * base * altura
 
     def perimetro_triangulo(self, lado1, lado2, lado3):
@@ -92,6 +102,8 @@ class Geometria:
         lado1 = float(lado1)
         lado2 = float(lado2)
         lado3 = float(lado3)
+        if lado1 < 0 or lado2 < 0 or lado3 < 0:
+            return 0
         perimetro = lado1 + lado2 + lado3
         return perimetro
     
@@ -112,6 +124,8 @@ class Geometria:
         lado1 = float(lado1)
         lado2 = float(lado2)
         lado3 = float(lado3)
+        if lado1 < 0 or lado2 < 0 or lado3 < 0:
+            return False
         return (lado1 + lado2 > lado3) and (lado1 + lado3 > lado2) and (lado2 + lado3 > lado1)
 
     def area_trapecio(self, base_mayor, base_menor, altura):
@@ -129,6 +143,8 @@ class Geometria:
         base_mayor = float(base_mayor)
         base_menor = float(base_menor)
         altura = float(altura)
+        if base_mayor < 0 or base_menor < 0 or altura < 0:
+            return 0
         return 0.5 * (base_mayor + base_menor) * altura
 
     def area_rombo(self, diagonal_mayor, diagonal_menor):
@@ -213,6 +229,8 @@ class Geometria:
             float: Volumen del cubo
         """
         lado = float(lado)
+        if lado < 0:
+            return 0
         return lado ** 3
 
     def area_superficie_cubo(self, lado):
@@ -341,12 +359,9 @@ class Geometria:
         Returns:
             float: Pendiente de la recta
         """
-        x1 = float(x1)
-        y1 = float(y1)
-        x2 = float(x2)
-        y2 = float(y2)
+        x1, y1, x2, y2 = float(x1), float(y1), float(x2), float(y2)
         if x2 - x1 == 0:
-            raise ValueError("La recta es vertical y no tiene pendiente definida.")
+            raise ZeroDivisionError("La recta es vertical: la pendiente es indefinida.")
         return (y2 - y1) / (x2 - x1)
 
     def ecuacion_recta(self, x1, y1, x2, y2):
@@ -362,14 +377,11 @@ class Geometria:
         Returns:
             tuple: Coeficientes (A, B, C) de la ecuación de la recta
         """
-        x1 = float(x1)
-        y1 = float(y1)
-        x2 = float(x2)
-        y2 = float(y2)
+        x1, y1, x2, y2 = float(x1), float(y1), float(x2), float(y2)
         A = y2 - y1
         B = x1 - x2
         C = x2 * y1 - x1 * y2
-        return (A, B, C)
+        return (int(A), int(B), int(C))
 
     def area_poligono_regular(self, num_lados, lado, apotema):
         """
