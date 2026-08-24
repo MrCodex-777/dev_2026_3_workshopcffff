@@ -15,7 +15,7 @@ class Magic:
             int: El n-ésimo número de Fibonacci
         """
         if n < 0:
-            raise ValueError("n debe ser un entero no negativo")
+            return None
         elif n == 0:
             return 0
         elif n == 1:
@@ -130,7 +130,7 @@ class Magic:
             int: El factorial de n
         """
         if n < 0:
-            raise ValueError("n debe ser un entero no negativo")
+            return None
         if n == 0:
             return 1
         else:
