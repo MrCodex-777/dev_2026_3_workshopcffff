@@ -129,6 +129,8 @@ class Magic:
         Returns:
             int: El factorial de n
         """
+        if n < 0:
+            raise ValueError("n debe ser un entero no negativo")
         if n == 0:
             return 1
         else:
