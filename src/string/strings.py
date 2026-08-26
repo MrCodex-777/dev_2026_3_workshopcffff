@@ -14,7 +14,8 @@ class Strings:
         Returns:
             bool: True si es palíndromo, False en caso contrario
         """
-        pass
+        texto = "".join(filter(str.isalnum, texto.lower()))
+        return texto == texto[::-1]
     
     def invertir_cadena(self, texto):
         """
@@ -26,7 +27,10 @@ class Strings:
         Returns:
             str: Cadena invertida
         """
-        pass
+        invertida = ""
+        for char in texto:
+            invertida = char + invertida
+        return invertida
     
     def contar_vocales(self, texto):
         """
@@ -38,8 +42,13 @@ class Strings:
         Returns:
             int: Número de vocales en la cadena
         """
-        pass
-    
+        vocales = "aeiou"
+        contador = 0
+        for char in texto.lower():
+            if char in vocales:
+                contador += 1
+        return contador
+
     def contar_consonantes(self, texto):
         """
         Cuenta el número de consonantes en una cadena.
@@ -50,8 +59,13 @@ class Strings:
         Returns:
             int: Número de consonantes en la cadena
         """
-        pass
-    
+        consonantes = "bcdfghjklmnpqrstvwxyz"
+        contador = 0
+        for char in texto.lower():
+            if char in consonantes:
+                contador += 1
+        return contador
+
     def es_anagrama(self, texto1, texto2):
         """
         Verifica si dos cadenas son anagramas (contienen exactamente los mismos caracteres).
@@ -63,8 +77,10 @@ class Strings:
         Returns:
             bool: True si son anagramas, False en caso contrario
         """
-        pass
-    
+        texto1 = "".join(filter(str.isalnum, texto1.lower()))
+        texto2 = "".join(filter(str.isalnum, texto2.lower()))
+        return sorted(texto1) == sorted(texto2)
+
     def contar_palabras(self, texto):
         """
         Cuenta el número de palabras en una cadena.
@@ -75,7 +91,8 @@ class Strings:
         Returns:
             int: Número de palabras en la cadena
         """
-        pass
+        palabras = texto.split()
+        return len(palabras)
     
     def palabras_mayus(self, texto):
         """
@@ -87,7 +104,7 @@ class Strings:
         Returns:
             str: Cadena con la primera letra de cada palabra en mayúscula
         """
-        pass
+        return texto.title()
     
     def eliminar_espacios_duplicados(self, texto):
         """
@@ -99,7 +116,7 @@ class Strings:
         Returns:
             str: Cadena sin espacios duplicados
         """
-        pass
+        return texto.strip()
     
     def es_numero_entero(self, texto):
         """
@@ -111,7 +128,12 @@ class Strings:
         Returns:
             bool: True si la cadena representa un número entero, False en caso contrario
         """
-        pass
+        texto = texto.strip()
+        if not texto:
+            return False
+        if texto[0] == '-':
+            texto = texto[1:]
+        return bool(texto) and all(char.isdigit() for char in texto)
     
     def cifrar_cesar(self, texto, desplazamiento):
         """
@@ -124,8 +146,15 @@ class Strings:
         Returns:
             str: Cadena cifrada
         """
-        pass
-    
+        cifrado = ""
+        for char in texto:
+            if char.isalpha():
+                base = ord('A') if char.isupper() else ord('a')
+                cifrado += chr((ord(char) - base + desplazamiento) % 26 + base)
+            else:
+                cifrado += char
+        return cifrado
+
     def descifrar_cesar(self, texto, desplazamiento):
         """
         Descifra una cadena cifrada con el método César.
@@ -137,7 +166,7 @@ class Strings:
         Returns:
             str: Cadena descifrada
         """
-        pass
+        return self.cifrar_cesar(texto, -desplazamiento)
     
     def encontrar_subcadena(self, texto, subcadena):
         """
@@ -150,4 +179,8 @@ class Strings:
         Returns:
             list: Lista con las posiciones iniciales de cada ocurrencia
         """
-        pass
+        posiciones = []
+        for i in range(len(texto) - len(subcadena) + 1):
+            if texto[i:i + len(subcadena)] == subcadena:
+                posiciones.append(i)
+        return posiciones
