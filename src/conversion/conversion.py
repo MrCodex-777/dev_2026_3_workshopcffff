@@ -98,7 +98,7 @@ class Conversion:
         decimal = int(decimal)
         if decimal < 0:
             raise ValueError("El número decimal debe ser positivo.")
-        binario = bin(decimal)[2:]  # Convertir a binario y eliminar el prefijo '0b'
+        binario = bin(decimal)[2:]
         return binario
     
     def binario_a_decimal(self, binario):
